@@ -67,10 +67,11 @@ resource "azurerm_linux_virtual_machine" "main" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get update",
-      "sudo apt-get install nodejs -y",
+      "sudo apt install nodejs-legacy -y",
+      "sudo apt-get install npm -y",
       "sudo apt install git -y",
       "git clone https://github.com/prapawit201/INT493-SoftwareArchitec.git",
-      "cd /Lab",
+      "cd INT493-SoftwareArchitec/Lab",
       "npm install",
       "node index.js"
     ]
