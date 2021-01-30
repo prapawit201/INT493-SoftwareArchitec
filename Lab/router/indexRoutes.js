@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 var folder = [];
-let count = 0;
+var count = 0;
 
 router.get("/", function (req, res) {
   res.json({
