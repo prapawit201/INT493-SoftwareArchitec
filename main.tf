@@ -56,7 +56,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
+    sku       = "20.04-LTS"
     version   = "latest"
   }
 
@@ -67,7 +67,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get update",
-      "sudo apt install nodejs-legacy -y",
+      "sudo apt install nodejs -y",
       "sudo apt-get install npm -y",
       "sudo apt install git -y",
       "git clone https://github.com/prapawit201/INT493-SoftwareArchitec.git",
