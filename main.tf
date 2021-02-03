@@ -1,14 +1,23 @@
+terraform {
+  backend "remote" {
+    organization = "Software-Architecture"
+
+    workspaces {
+      name = "gh-actions-demo"
+    }
+  }
+}
 provider "azurerm" {
   features {}
 }
 
 resource "azurerm_resource_group" "main" {
-  name     = "lab1-resources"
-  location = "southeastasia"
+  name     = "lab1-test"
+  location = "Southeast Asia"
 }
 
 resource "azurerm_virtual_network" "main" {
-  name                = "lab1-network"
+  name                = "lab1-test-network"
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
@@ -64,18 +73,15 @@ resource "azurerm_linux_virtual_machine" "main" {
     storage_account_type = "Standard_LRS"
     caching              = "ReadWrite"
   }
+
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get update",
-      "sudo apt install nodejs -y",
-      "sudo apt-get install npm -y",
-      "sudo apt install git -y",
-      "git clone https://github.com/prapawit201/INT493-SoftwareArchitec.git",
-      "cd INT493-SoftwareArchitec/Lab",
+      "sudo apt update", "sudo apt install -y nodejs", "sudo apt install -y npm",
+      "git clone https://github.com/prapawit201/INT493-SoftwareArchitec.git" ,
+      "cd INT493-SoftwareArchitecture/Lab1/demo1",
       "npm install",
       "sudo npm install -g pm2",
-      "pm2 start index.js"
-
+      "pm2 start app.js"
     ]
 
     connection {
@@ -84,5 +90,4 @@ resource "azurerm_linux_virtual_machine" "main" {
       password = "azureuser@b2"
     }
   }
-
 }
