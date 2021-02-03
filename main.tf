@@ -1,12 +1,3 @@
-terraform {
-  backend "remote" {
-    organization = "Software-Architect"
-
-    workspaces {
-      name = "gh-actions-demo"
-    }
-  }
-}
 provider "azurerm" {
   version = "=2.40.0"
   features {}
