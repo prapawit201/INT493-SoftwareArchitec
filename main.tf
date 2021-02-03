@@ -56,7 +56,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "20.04-LTS"
+    sku       = "18.04-LTS"
     version   = "latest"
   }
 
@@ -73,7 +73,9 @@ resource "azurerm_linux_virtual_machine" "main" {
       "git clone https://github.com/prapawit201/INT493-SoftwareArchitec.git",
       "cd INT493-SoftwareArchitec/Lab",
       "npm install",
-      "node index.js"
+      "sudo npm install -g pm2",
+      "pm2 start index.js"
+
     ]
 
     connection {
