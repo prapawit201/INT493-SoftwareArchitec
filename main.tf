@@ -1,12 +1,3 @@
-terraform {
-  backend "remote" {
-    organization = "Software-Architecture"
-
-    workspaces {
-      name = "gh-actions-demo"
-    }
-  }
-}
 provider "azurerm" {
   features {}
 }
@@ -81,7 +72,7 @@ resource "azurerm_linux_virtual_machine" "main" {
       "cd INT493-SoftwareArchitecture/Lab1/demo1",
       "npm install",
       "sudo npm install -g pm2",
-      "pm2 start app.js"
+      "pm2 start index.js"
     ]
 
     connection {
