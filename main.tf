@@ -1,20 +1,4 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-    }
-    random = {
-      source = "hashicorp/random"
-    }
-  }
-  backend "remote" {
-    organization = "Software-Architect"
 
-    workspaces {
-      name = "gh-actions-demo"
-    }
-  }
-}
 provider "azurerm" {
   features {}
 }
