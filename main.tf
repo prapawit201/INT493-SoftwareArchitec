@@ -83,7 +83,6 @@ resource "azurerm_linux_virtual_machine" "main" {
       "sudo mv myapp.service /lib/systemd/system/myapp.service",
       "sudo systemctl enable myapp.service",
       "sudo systemctl start myapp.service",
-      "sudo systemctl status myapp.service"
     ]
 
     connection {
