@@ -8,6 +8,11 @@ provider "azurerm" {
   features {}
 }
 
+resource "azurerm_resource_group" "main" {
+  name     = "group-project"
+  location = "Southeast Asia"
+}
+
 resource "azurerm_virtual_network" "main" {
   name                = "lab1-test-network"
   address_space       = ["10.0.0.0/16"]
