@@ -1,12 +1,7 @@
 terraform {
-  backend "remote" {
-    hostname     = "azueruser"
-    organization = "Software-Architect"
+  required_version = "~> 0.12.0"
 
-    workspaces {
-      name = "INT493-Softwarerchitec"
-    }
-  }
+  backend "remote" {}
 }
 
 provider "azurerm" {
