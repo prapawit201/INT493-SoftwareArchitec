@@ -32,7 +32,7 @@ jobs:
       run: terraform init
 
     - name: Terraform Destroy
-      run: terraform destroy
+      run: terraform destroy -y
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
