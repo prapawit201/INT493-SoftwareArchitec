@@ -4,7 +4,7 @@ const router = express.Router();
 let folder = [];
 
 router.get("/", function (req, res) {
-  res.send("Hello world Homework Lab1");
+  res.send("Hello world Homework Lab1 Test auto deploy");
 });
 router.get("/messages", function (req, res) {
   res.json({
