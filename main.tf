@@ -1,7 +1,12 @@
 terraform {
-  required_version = "~> 0.14.5"
+  backend "remote" {
+    hostname     = "b2.tnpl.me"
+    organization = "Software-Architect"
 
-  backend "remote" {}
+    workspaces {
+      name = "INT493-Softwarerchitec"
+    }
+  }
 }
 
 provider "azurerm" {
