@@ -2,15 +2,17 @@ const express = require("express");
 const router = express.Router();
 
 let folder = [];
-let count = 0;
 
 router.get("/", function (req, res) {
+  res.send("Hello world Homework Lab1");
+});
+router.get("/messages", function (req, res) {
   res.json({
     data: folder,
   });
   console.log("Get data success");
 });
-router.post("/test", function (req, res) {
+router.post("/messages", function (req, res) {
   let text = req.body.text;
   let count = 0;
   let length = folder.length;
