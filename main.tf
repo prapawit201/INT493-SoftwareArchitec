@@ -1,20 +1,14 @@
 provider "azurerm" {
-
-  version         = "=2.4.0"
-  subscription_id = "6971bfa9-d983-4fad-a11b-14807d6665b5"
-  client_id       = "65c4e446-fbe8-43bf-93c7-e60afa777449"
-  client_secret   = "WQZSkFYvXjdkSZIAaAAa9_n2yo6giQQxAH"
-  tenant_id       = "79845616-9df0-43e0-8842-e300feb2642a"
   features {}
 }
 
 resource "azurerm_resource_group" "main" {
-  name     = "lab2-test"
+  name     = "lab1-test"
   location = "Southeast Asia"
 }
 
 resource "azurerm_virtual_network" "main" {
-  name                = "lab2-test-network"
+  name                = "lab1-test-network"
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
@@ -24,18 +18,18 @@ resource "azurerm_subnet" "internal" {
   name                 = "internal"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefix       = "10.0.2.0/24"
+  address_prefixes     = ["10.0.2.0/24"]
 }
 
 resource "azurerm_public_ip" "main" {
-  name                = "lab2-pip"
+  name                = "lab1-pip"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   allocation_method   = "Static"
 }
 
 resource "azurerm_network_interface" "main" {
-  name                = "lab2-nic"
+  name                = "lab1-nic"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
 
@@ -48,7 +42,7 @@ resource "azurerm_network_interface" "main" {
 }
 
 resource "azurerm_linux_virtual_machine" "main" {
-  name                            = "lab2-vm"
+  name                            = "lab1-vm"
   resource_group_name             = azurerm_resource_group.main.name
   location                        = azurerm_resource_group.main.location
   size                            = "Standard_B1s"
