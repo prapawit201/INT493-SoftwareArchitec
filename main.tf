@@ -9,7 +9,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "main" {
-  name     = "group-project"
+  name     = "lab1-test"
   location = "Southeast Asia"
 }
 
