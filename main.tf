@@ -1,4 +1,9 @@
 provider "azurerm" {
+  version         = "=2.4.0"
+  subscription_id = "6971bfa9-d983-4fad-a11b-14807d6665b5"
+  client_id       = "65c4e446-fbe8-43bf-93c7-e60afa777449"
+  client_secret   = "WQZSkFYvXjdkSZIAaAAa9_n2yo6giQQxAH"
+  tenant_id       = "79845616-9df0-43e0-8842-e300feb2642a"
   features {}
 }
 
@@ -18,7 +23,7 @@ resource "azurerm_subnet" "internal" {
   name                 = "internal"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes     = ["10.0.2.0/24"]
+  address_prefix       = "10.0.2.0/24"
 }
 
 resource "azurerm_public_ip" "main" {
