@@ -1,3 +1,14 @@
+terraform {
+  backend "remote" {
+    hostname     = "azueruser"
+    organization = "Software-Architect"
+
+    workspaces {
+      name = "INT493-Softwarerchitec"
+    }
+  }
+}
+
 provider "azurerm" {
   version         = "=2.4.0"
   subscription_id = "6971bfa9-d983-4fad-a11b-14807d6665b5"
