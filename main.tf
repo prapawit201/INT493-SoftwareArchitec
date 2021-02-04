@@ -1,13 +1,3 @@
-terraform {
-  backend "remote" {
-    hostname = "b2.tnpl.me"
-  organization = "Software-Architect"
-
-    workspaces {
-      name = "INT493-Softwarerchitec"
-    }
-  }
-}
 
 provider "azurerm" {
   version         = "=2.4.0"
