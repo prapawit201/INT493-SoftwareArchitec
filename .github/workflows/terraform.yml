@@ -28,10 +28,10 @@ jobs:
         run: terraform init
         
       - name: Plan before destroy
-        run: terraform plan -destroy
+        run: terraform plan -destroy 
 
       - name: Clear resource group
-        run: terraform destroy -auto-approve 
+        run: terraform destroy -auto-approve -target lab-test
 
       - name: Terraform Init
         run: terraform init
