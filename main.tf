@@ -52,8 +52,8 @@ resource "azurerm_linux_virtual_machine" "main" {
   resource_group_name             = azurerm_resource_group.main.name
   location                        = azurerm_resource_group.main.location
   size                            = "Standard_B1s"
-  admin_username                  = var.azure_username
-  admin_password                  = var.azure_password
+  admin_username                  = "azureuser"
+  admin_password                  = "azureuser@b2"
   disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.main.id,
