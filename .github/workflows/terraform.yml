@@ -24,9 +24,12 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
         
+      - name: Init before destroy
+        run: terraform init
+        
       - name: Plan before destroy
         run: terraform plan -destroy
-        
+
       - name: Clear resource group
         run: terraform destroy -auto-approve 
 
