@@ -25,7 +25,7 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Clear resource
-        run: az group delete -n lab1-test --yes
+        run: az group delete --resource-group lab1-test --yes
           az vm delete -n lab1-test --yes
       - name: Terraform Init
         run: terraform init
