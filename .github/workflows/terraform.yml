@@ -24,7 +24,7 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: Azure login
+      - name: Azure login cross-platform
         run: az login --use-device-code
         
       - name: Clear resource group
