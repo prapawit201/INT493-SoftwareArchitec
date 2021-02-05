@@ -31,7 +31,7 @@ jobs:
         run: terraform plan -destroy 
 
       - name: Clear resource group
-        run: terraform destroy -auto-approve -target lab-test
+        run: terraform destroy -auto-approve -force
 
       - name: Terraform Init
         run: terraform init
