@@ -26,11 +26,9 @@ jobs:
 
       - name: Azure login
         run: az login
+        
       - name: Clear resource group
         run: az group delete --resource-group lab1-test --yes
-
-      - name: Clear virtual machine
-        run: az vm delete -n lab1-test --yes
 
       - name: Terraform Init
         run: terraform init
