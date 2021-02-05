@@ -5,52 +5,14 @@ provider "azurerm" {
   client_id       = "65c4e446-fbe8-43bf-93c7-e60afa777449"
   client_secret   = "WQZSkFYvXjdkSZIAaAAa9_n2yo6giQQxAH"
   tenant_id       = "79845616-9df0-43e0-8842-e300feb2642a"
+  
   features {}
-}
-
-resource "azurerm_resource_group" "main" {
-  name     = "lab1-test"
-  location = "Southeast Asia"
-}
-
-resource "azurerm_virtual_network" "main" {
-  name                = "lab1-test-network"
-  address_space       = ["10.0.0.0/16"]
-  location            = azurerm_resource_group.main.location
-  resource_group_name = azurerm_resource_group.main.name
-}
-
-resource "azurerm_subnet" "internal" {
-  name                 = "internal"
-  resource_group_name  = azurerm_resource_group.main.name
-  virtual_network_name = azurerm_virtual_network.main.name
-  address_prefix       = "10.0.2.0/24"
-}
-
-resource "azurerm_public_ip" "main" {
-  name                = "lab1test-pip"
-  resource_group_name = azurerm_resource_group.main.name
-  location            = azurerm_resource_group.main.location
-  allocation_method   = "Static"
-}
-
-resource "azurerm_network_interface" "main" {
-  name                = "lab1test-nic"
-  resource_group_name = azurerm_resource_group.main.name
-  location            = azurerm_resource_group.main.location
-
-  ip_configuration {
-    name                          = "internal"
-    subnet_id                     = azurerm_subnet.internal.id
-    private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.main.id
-  }
 }
 
 resource "azurerm_linux_virtual_machine" "main" {
   name                            = "lab1-test"
-  resource_group_name             = azurerm_resource_group.main.name
-  location                        = azurerm_resource_group.main.location
+  resource_group_name             = "group-project"
+  location                        = "Southeast Asia"
   size                            = "Standard_B1s"
   admin_username                  = "azureuser"
   admin_password                  = "azureuser@b2"
