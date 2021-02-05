@@ -24,6 +24,7 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
+  terraform:
     name: "Terraform clear resource"
     steps: 
       - name: Azure Login
@@ -32,6 +33,7 @@ jobs:
       - name: Clear resource group
         run: az group delete --resource-group lab1-test --yes 
     
+  terraform: 
     name: "Terraform deploy"
     steps:
       - name: Terraform Init
