@@ -24,14 +24,15 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
         
-      - name: Init before destroy
-        run: terraform init
-        
-      - name: Plan before destroy
-        run: terraform plan -destroy 
+      - name: Azure Login
+        run: az login --use-device-code
 
       - name: Clear resource group
-        run: terraform destroy -auto-approve -force
+<<<<<<< HEAD
+        run: az group delete --resource-group lab1-test --yes 
+=======
+        run: terraform destroy -auto-approve -target lab-test
+>>>>>>> parent of f01049e... deploy v.3.16
 
       - name: Terraform Init
         run: terraform init
