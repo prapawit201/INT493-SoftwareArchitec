@@ -28,11 +28,7 @@ jobs:
         run: az login --use-device-code
 
       - name: Clear resource group
-<<<<<<< HEAD
         run: az group delete --resource-group lab1-test --yes 
-=======
-        run: terraform destroy -auto-approve -target lab-test
->>>>>>> parent of f01049e... deploy v.3.16
 
       - name: Terraform Init
         run: terraform init
