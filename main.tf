@@ -9,6 +9,40 @@ provider "azurerm" {
   features {}
 }
 
+resource "azurerm_virtual_network" "main" {
+  name                = "lab1-test-network"
+  address_space       = ["10.0.0.0/16"]
+  location            = "Southeast Asia"
+  resource_group_name = "group-project"
+}
+
+resource "azurerm_subnet" "internal" {
+  name                 = "internal"
+  resource_group_name  = "group-project"
+  virtual_network_name = azurerm_virtual_network.main.name
+  address_prefix       = "10.0.2.0/24"
+}
+
+resource "azurerm_public_ip" "main" {
+  name                = "lab1test-pip"
+  resource_group_name = "group-project"
+  location            = "Southeast Asia"
+  allocation_method   = "Static"
+}
+
+resource "azurerm_network_interface" "main" {
+  name                = "lab1test-nic"
+  resource_group_name = "group-project"
+  location            = "Southeast Asia"
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.internal.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.main.id
+  }
+}
+
 resource "azurerm_linux_virtual_machine" "main" {
   name                            = "lab1-test"
   resource_group_name             = "group-project"
