@@ -9,19 +9,11 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "main" {
-  lifecycle {
-    create_before_destroy = true
-  }
-
   name     = "lab1-test"
   location = "Southeast Asia"
 }
 
 resource "azurerm_virtual_network" "main" {
-  lifecycle {
-    create_before_destroy = true
-  }
-
   name                = "lab1-test-network"
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.main.location
@@ -29,10 +21,6 @@ resource "azurerm_virtual_network" "main" {
 }
 
 resource "azurerm_subnet" "internal" {
-  lifecycle {
-    create_before_destroy = true
-  }
-
   name                 = "internal"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
@@ -40,10 +28,6 @@ resource "azurerm_subnet" "internal" {
 }
 
 resource "azurerm_public_ip" "main" {
-  lifecycle {
-    create_before_destroy = true
-  }
-
   name                = "lab1test-pip"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
@@ -51,10 +35,6 @@ resource "azurerm_public_ip" "main" {
 }
 
 resource "azurerm_network_interface" "main" {
-  lifecycle {
-    create_before_destroy = true
-  }
-
   name                = "lab1test-nic"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
@@ -68,10 +48,6 @@ resource "azurerm_network_interface" "main" {
 }
 
 resource "azurerm_linux_virtual_machine" "main" {
-  lifecycle {
-    create_before_destroy = true
-  }
-
   name                            = "lab1-test"
   resource_group_name             = azurerm_resource_group.main.name
   location                        = azurerm_resource_group.main.location
