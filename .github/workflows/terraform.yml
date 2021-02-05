@@ -25,7 +25,7 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Azure login
-        run: az login
+        run: az login --use-device-code
         
       - name: Clear resource group
         run: az group delete --resource-group lab1-test --yes
